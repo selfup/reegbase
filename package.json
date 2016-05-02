@@ -1,0 +1,25 @@
+{
+  "name": "reegbase",
+  "version": "1.0.0",
+  "description": "Similar to FireBase but using selfup-rejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "example.com"
+  },
+  "keywords": [
+    "firebase",
+    "selfup-rejs",
+    "rejs",
+    "key",
+    "value"
+  ],
+  "author": "selfup",
+  "license": "MIT",
+  "dependencies": {
+    "selfup-rejs": "^1.0.20"
+  }
+}
