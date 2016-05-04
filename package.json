@@ -20,6 +20,14 @@
   "author": "selfup",
   "license": "MIT",
   "dependencies": {
-    "selfup-rejs": "^1.0.20"
+    "body-parser": "^1.15.1",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "jquery": "^2.2.3",
+    "lodash": "^4.11.2",
+    "redis": "^2.5.3",
+    "request": "^2.72.0",
+    "selfup-rejs": "^1.0.20",
+    "socket.io": "^1.4.6"
   }
 }
