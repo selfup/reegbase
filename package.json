@@ -17,6 +17,10 @@
     "key",
     "value"
   ],
+  "scripts": {
+    "start": "./node_modules/nodemon/bin/nodemon.js index.js",
+    "test": "mocha"
+  },
   "author": "selfup",
   "license": "MIT",
   "dependencies": {
