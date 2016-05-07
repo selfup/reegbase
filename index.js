@@ -20,10 +20,18 @@ const io = socketIo(server)
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.get('/', (req, res) => {
+app.get('/getTable/:tableName', (req, res) => {
+  let   requestArray = req.originalUrl.split('/')
+  const tableName    = requestArray[requestArray.length - 1]
+  res.json(rejs.getTable(`${tableName}`))
+})
+
+app.post('/createTable/:tableName', (req, res) => {
   rejs.createTable('apiTest')
-  rejs.newData('apiTest', {testing: "if I can display this data"})
-  res.json(rejs.getTable('apiTest'))
+})
+
+app.post('/newData/:tableName', (req, res) => {
+  rejs.newData('apiTest')
 })
 
 io.sockets.on('connection', socket => {
