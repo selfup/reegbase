@@ -5,10 +5,11 @@ const express = require('express')
 const socketIo = require('socket.io')
 const _ = require('lodash')
 const app = express()
-const port = process.env.PORT || 3000
 const bodyParser = require('body-parser')
-const selfupRejs = require('selfup-rejs')
-const rejs = new selfupRejs
+const cors = require('cors')
+const port = process.env.PORT || 3000
+const Selfup = require('selfup-rejs')
+const rejs = new Selfup
 
 const server = http.createServer(app)
   .listen(port, () => {
@@ -17,21 +18,29 @@ const server = http.createServer(app)
 
 const io = socketIo(server)
 
-app.use(express.static('public'))
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/getTable/:tableName', (req, res) => {
-  let   requestArray = req.originalUrl.split('/')
-  const tableName    = requestArray[requestArray.length - 1]
-  res.json(rejs.getTable(`${tableName}`))
+  res.json(rejs.getTable(`${req.params.tableName}`))
 })
 
-app.post('/createTable/:tableName', (req, res) => {
-  rejs.createTable('apiTest')
+app.get('/createTable/:tableName', (req, res) => {
+  let tableName = req.params.tableName
+  rejs.createTable(`${tableName}`)
+  res.json({createdTable: tableName})
+})
+
+app.get('/dropTable/:tableName', (req, res) => {
+  let tableName = req.params.tableName
+  rejs.dropTable(`${tableName}`)
+  res.json({droppedTable: tableName})
 })
 
 app.post('/newData/:tableName', (req, res) => {
-  rejs.newData('apiTest')
+  let tableName = req.params.tableName
+  rejs.newData(tableName, req.body)
+  res.json({status: 201})
 })
 
 io.sockets.on('connection', socket => {

@@ -4,6 +4,7 @@
   "description": "Similar to FireBase but using selfup-rejs",
   "main": "index.js",
   "scripts": {
+    "start": "./node_modules/nodemon/bin/nodemon.js index.js",
     "test": "mocha"
   },
   "repository": {
@@ -17,16 +18,14 @@
     "key",
     "value"
   ],
-  "scripts": {
-    "start": "./node_modules/nodemon/bin/nodemon.js index.js",
-    "test": "mocha"
-  },
   "author": "selfup",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.1",
+    "cors": "^2.7.1",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
+    "express-cors": "0.0.3",
     "jquery": "^2.2.3",
     "lodash": "^4.11.2",
     "redis": "^2.5.3",
