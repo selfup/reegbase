@@ -21,8 +21,9 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
-  res.json({a: 'test'})
-  //render JSON as a first step
+  rejs.createTable('apiTest')
+  rejs.newData('apiTest', {testing: "if I can display this data"})
+  res.json(rejs.getTable('apiTest'))
 })
 
 io.sockets.on('connection', socket => {
