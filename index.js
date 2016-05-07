@@ -21,6 +21,7 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
+  res.json({a: 'test'})
   //render JSON as a first step
 })
 
