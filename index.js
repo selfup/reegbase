@@ -45,7 +45,7 @@ io.sockets.on('connection', socket => {
       io.emit('foundWhere', foundWhere)
     }
     if (channel === 'updateTable') {
-      let foundWhere = rejs.updateTable(`${message[0]}`, `${message[1]}`)
+      let foundWhere = rejs.updateTable(`${message[0]}`, message[1]})
     }
   })
 })
