@@ -28,7 +28,7 @@ io.sockets.on('connection', socket => {
       io.emit('foundTable', foundTable)
     }
     if (channel === 'dropTable') {
-      rejs.dropTable(`${message}`)
+      rejs.dropTable(message)
     }
     if (channel === 'findId') {
       let foundId = rejs.findId(`${message[0]}`, `${message[1]}`)
@@ -43,6 +43,9 @@ io.sockets.on('connection', socket => {
     if (channel === 'where') {
       let foundWhere = rejs.where(`${message[0]}`, `${message[1]}`)
       io.emit('foundWhere', foundWhere)
+    }
+    if (channel === 'updateTable') {
+      let foundWhere = rejs.updateTable(`${message[0]}`, `${message[1]}`)
     }
   })
 })
