@@ -21,6 +21,9 @@ io.sockets.on('connection', socket => {
       rejs.createTable(`${message}`)
     }
     if (channel === 'newData') {
+      if (message[0].includes("<")) {
+        message[0] = "NO SCRIPT TAGS"
+      }
       rejs.newData(`${message[0]}`, message[1])
     }
     if (channel === 'getTable') {
@@ -36,9 +39,6 @@ io.sockets.on('connection', socket => {
     }
     if (channel === 'deleteById') {
       rejs.deleteById(`${message[0]}`, `${message[1]}`)
-    }
-    if (channel === 'dropTable') {
-      rejs.dropTable(`${message}`)
     }
     if (channel === 'where') {
       let foundWhere = rejs.where(`${message[0]}`, `${message[1]}`)
