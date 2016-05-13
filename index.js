@@ -21,8 +21,8 @@ io.sockets.on('connection', socket => {
       rejs.createTable(`${message}`)
     }
     if (channel === 'newData') {
-      if (message[0].includes("<")) {
-        message[0] = "NO SCRIPT TAGS"
+      if (message[1].message.includes("<")) {
+        message[1].message = "NO SCRIPT TAGS"
       }
       rejs.newData(`${message[0]}`, message[1])
     }
