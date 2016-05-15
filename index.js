@@ -22,7 +22,7 @@ io.sockets.on('connection', socket => {
     }
     if (channel === 'newData') {
       if (message[1].message.includes("<")) {
-        message[1].message = "NO SCRIPT TAGS"
+        return
       }
       rejs.newData(`${message[0]}`, message[1])
     }
