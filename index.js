@@ -1,14 +1,12 @@
 'use strict'
 
-const http = require('http')
-const express = require('express')
+const http     = require('http')
 const socketIo = require('socket.io')
-const app = express()
-const port = process.env.PORT || 3000
-const Selfup = require('selfup-rejs')
-const rejs = new Selfup
+const Selfup   = require('selfup-rejs')
+const rejs     = new Selfup
+const port     = process.env.PORT || 3000
 
-const server = http.createServer(app)
+const server = http.createServer()
   .listen(port, () => {
   console.log(`Listening on port ${port}.`)
 })
@@ -35,5 +33,3 @@ io.sockets.on('connection', socket => {
     }
   })
 })
-
-module.exports = app
