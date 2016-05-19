@@ -24,12 +24,23 @@ io.sockets.on('connection', socket => {
       }
       rejs.newData(`${message[0]}`, message[1])
     }
+    if (channel === 'newUser') {
+      rejs.newData(`${message[0]}`, message[1])
+    }
     if (channel === 'getTable') {
       let foundTable = rejs.getTable(`${message}`)
       io.emit('foundTable', foundTable)
     }
+    if (channel === 'getUser') {
+      if (rejs.getTable(`${message.user}`)["1"].token.token === message.token) {
+        io.emit('foundUser', 'valid')
+      }
+    }
     if (channel === 'updateTable') {
       let foundWhere = rejs.updateTable(`${message[0]}`, message[1])
+    }
+    if (channel === 'dropTable') {
+      let foundWhere = rejs.dropTable(message)
     }
   })
 })
