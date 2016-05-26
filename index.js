@@ -29,11 +29,11 @@ io.sockets.on('connection', socket => {
     }
     if (channel === 'getTable') {
       let foundTable = rejs.getTable(`${message}`)
-      io.emit('foundTable', foundTable)
+      io.to(socket.id).emit('foundTable', foundTable);
     }
     if (channel === 'getUser') {
       if (rejs.getTable(`${message.user}`)["1"].token.token === message.token) {
-        io.emit('foundUser', 'valid')
+        io.to(socket.id).emit('foundUser', ['valid', socket.id])
       }
     }
     if (channel === 'updateTable') {
